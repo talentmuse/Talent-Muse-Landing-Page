@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talent Muse — Where Music Talent Meets Opportunity</title>
+  <meta name="description" content="Talent Muse: Showcase your talent, collaborate with creators, and shine on the world stage — Spotlight • Connect • Karaoke." />
+  <link rel="icon" href="/favicon.ico" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Talent Muse" />
+  <meta property="og:description" content="Where Talent Meets Opportunity." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thetalentmuse.com" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Talent+Muse" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Talent Muse" />
+  <meta name="twitter:description" content="Where Talent Meets Opportunity." />
+  <meta name="twitter:image" content="https://placehold.co/1200x630/png?text=Talent+Muse" />
+  
+  <style>
+    /* =============================
+       Easy-to-edit brand variables
+       Change colors in one place
+    ============================== */
+    :root {
+      --brand: #6d5ef7;           /* Primary brand */
+      --brand-600: #5748ef;
+      --brand-700: #4639d4;
+      --accent: #00d4ff;          /* Accent for highlights */
+      --bg: #0c0c12;              /* Page background */
+      --card: #15151f;            /* Card background */
+      --text: #f6f7fb;            /* Main text */
+      --muted: #b9bbd0;           /* Muted text */
+      --border: #232335;          /* Borders */
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --maxw: 1200px;
+    }
+
+    /* Global Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(109,94,247,.25), transparent),
+                  radial-gradient(1000px 700px at -10% 10%, rgba(0,212,255,.18), transparent),
+                  var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 32px, var(--maxw)); margin-inline: auto; }
+    .button { display: inline-flex; align-items: center; gap: .6rem; border-radius: 999px; padding: .9rem 1.2rem; font-weight: 700; border: 1px solid transparent; cursor: pointer; transition: .25s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-600)); box-shadow: 0 10px 24px rgba(109,94,247,.35); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 32px rgba(109,94,247,.45); }
+    .btn-outline { background: transparent; border-color: #2b2b40; color: var(--text); }
+    .btn-outline:hover { background: #1a1a28; }
+
+    /* =============================
+       Header / Navigation
+    ============================== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(12,12,18,.75), rgba(12,12,18,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; font-weight: 800; letter-spacing: .2px; }
+    .brand-mark { width: 36px; height: 36px; border-radius: 10px; background: conic-gradient(from 180deg at 50% 50%, var(--brand), var(--accent), var(--brand)); box-shadow: 0 6px 18px rgba(0,212,255,.45); }
+    nav ul { list-style: none; display: flex; gap: 1.1rem; padding: 0; margin: 0; }
+    nav a { opacity: .9; padding: .5rem .75rem; border-radius: 10px; }
+    nav a:hover { background: #1a1a28; }
+    .nav-cta { display: flex; align-items: center; gap: .6rem; }
+
+    /* Mobile Nav */
+    .menu-btn { display: none; background: transparent; border: 1px solid #2b2b40; border-radius: 12px; padding: .6rem .75rem; }
+    @media (max-width: 960px) {
+      nav { display: none; }
+      .menu-btn { display: inline-flex; }
+      .mobile-drawer { position: fixed; inset: 0 0 auto auto; width: 86%; max-width: 360px; height: 100vh; background: #0f0f19; border-left: 1px solid var(--border); transform: translateX(100%); transition: transform .3s ease; box-shadow: var(--shadow); z-index: 60; display: flex; flex-direction: column; }
+      .mobile-drawer.open { transform: translateX(0); }
+      .mobile-drawer .top { display: flex; align-items: center; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--border); }
+      .mobile-drawer nav { display: block; }
+      .mobile-drawer ul { display: grid; gap: .25rem; padding: 1rem; }
+      .mobile-drawer a { display: block; padding: .9rem 1rem; border-radius: 12px; }
+      .mobile-drawer a:hover { background: #171727; }
+      .mobile-drawer .drawer-cta { margin-top: auto; padding: 1rem; display: grid; gap: .6rem; }
+    }
+
+    /* =============================
+       Hero Section
+    ============================== */
+    .hero { padding: clamp(64px, 10vw, 120px) 0 64px; position: relative; overflow: clip; }
+    .hero .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .6rem; padding: .35rem .65rem; border-radius: 999px; background: rgba(0,212,255,.12); color: #d9fbff; border: 1px solid rgba(0,212,255,.25); font-weight: 700; font-size: .8rem; letter-spacing: .2px; }
+    .title { font-size: clamp(32px, 6vw, 56px); line-height: 1.1; margin: 16px 0 12px; font-weight: 900; }
+    .subtitle { color: var(--muted); font-size: clamp(16px, 2.5vw, 18px); max-width: 56ch; }
+    .hero-cta { display: flex; gap: .8rem; margin-top: 24px; flex-wrap: wrap; }
+    .hero .media { position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(180deg, #1a1a28, #0e0e16); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .hero .media::after { content: ""; position: absolute; inset: auto -20% -25% -20%; height: 45%; background: radial-gradient(60% 60% at 50% 0%, rgba(109,94,247,.45), transparent); filter: blur(30px); }
+    .badge-row { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 14px; }
+    .badge { font-size: .8rem; padding: .35rem .6rem; border: 1px solid #2b2b40; border-radius: 999px; color: #d8d8ea; background: #101019; }
+
+    /* =============================
+       Feature Cards (Spotlight / Connect / Karaoke)
+    ============================== */
+    .features { padding: 64px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px; }
+    .section-head h2 { margin: 0; font-size: clamp(24px, 3.5vw, 36px); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; display: grid; gap: 12px; transition: transform .2s ease, border-color .2s ease; }
+    .card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.16); }
+    .chip { display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem; padding: .35rem .6rem; border-radius: 999px; background: #101019; border: 1px solid #2b2b40; color: #d6d6eb; }
+    .card p { color: var(--muted); margin: 0; }
+    .card .actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+    @media (max-width: 960px) { .hero .grid { grid-template-columns: 1fr; } .cards { grid-template-columns: 1fr; } }
+
+    /* =============================
+       How It Works
+    ============================== */
+    .how { padding: 64px 0; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .step { background: #101019; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+    .step .num { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-600)); font-weight: 900; box-shadow: 0 10px 22px rgba(109,94,247,.35); }
+    .step h3 { margin: 10px 0 6px; font-size: 1.05rem; }
+    .step p { margin: 0; color: var(--muted); }
+    @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+
+    /* =============================
+       Testimonials (Carousel-lite)
+    ============================== */
+    .testimonials { padding: 64px 0; }
+    .t-grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+    .t-card { background: #101019; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; scroll-snap-align: start; }
+    .t-head { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--brand)); }
+    .t-quote { color: var(--muted); margin: 10px 0 0; }
+
+    /* =============================
+       CTA Banner
+    ============================== */
+    .cta { padding: 64px 0; }
+    .cta-box { background: linear-gradient(90deg, rgba(109,94,247,.22), rgba(0,212,255,.22)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-lg); padding: clamp(20px, 4vw, 32px); display: grid; gap: 12px; text-align: center; box-shadow: var(--shadow); }
+    .cta-box .title { margin: 0; font-size: clamp(24px, 4.5vw, 36px); }
+
+    /* =============================
+       Footer
+    ============================== */
+    footer { padding: 32px 0 48px; border-top: 1px solid rgba(255,255,255,.06); background: linear-gradient(180deg, rgba(16,16,25,.8), rgba(16,16,25,.4)); }
+    .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; }
+    .f-brand { display: flex; align-items: center; gap: .8rem; }
+    .social { display: flex; gap: .6rem; }
+    .social a { padding: .5rem .7rem; border: 1px solid var(--border); border-radius: 12px; }
+    .f-links { display: grid; gap: .35rem; }
+    .legal { margin-top: 18px; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 800px) { .f-grid { grid-template-columns: 1fr; } }
+
+    /* Utility */
+    .muted { color: var(--muted); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <!-- =============================
+       Header / Navigation
+       EDIT: Update links, connect to sections (#spotlight, #connect, #karaoke)
+  ============================== -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main Navigation">
+      <a class="brand" href="#top" aria-label="Talent Muse Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Talent Muse</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="#testimonials">Stories</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="button btn-outline" href="#login">Log in</a>
+        <a class="button btn-primary" href="#signup">Sign Up Free</a>
+        <button class="menu-btn" id="menuBtn" aria-controls="mobileDrawer" aria-expanded="false">☰ Menu</button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true" aria-label="Mobile Navigation">
+      <div class="top">
+        <div class="f-brand">
+          <span class="brand-mark" aria-hidden="true"></span><strong>Talent Muse</strong>
+        </div>
+        <button id="closeDrawer" aria-label="Close menu">✕</button>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#features" class="drawer-link">Features</a></li>
+          <li><a href="#how" class="drawer-link">How it Works</a></li>
+          <li><a href="#testimonials" class="drawer-link">Stories</a></li>
+          <li><a href="#contact" class="drawer-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="drawer-cta">
+        <a class="button btn-outline" href="#login">Log in</a>
+        <a class="button btn-primary" href="#signup">Sign Up Free</a>
+      </div>
+    </aside>
+  </header>
+
+  <!-- =============================
+       Hero
+  ============================== -->
+  <main id="top" class="hero">
+    <div class="container grid">
+      <div>
+        <span class="eyebrow">Where Talent Meets Opportunity</span>
+        <h1 class="title">Showcase. Collaborate. Shine — all in one place.</h1>
+        <p class="subtitle">Talent Muse brings together <strong>Spotlight</strong> (video competitions), <strong>Connect</strong> (creative collaboration), and <strong>Karaoke</strong> (solo & duet performances). It’s <strong>free to join</strong> with optional add‑ons when you’re ready to level up.</p>
+        <div class="hero-cta">
+          <a href="#signup" class="button btn-primary">Get Started Free</a>
+          <a href="#features" class="button btn-outline">Explore Features</a>
+        </div>
+        <div class="badge-row" aria-label="Highlights">
+          <span class="badge">✅ Global votes</span>
+          <span class="badge">🛡️ Human & AI moderation</span>
+          <span class="badge">💬 Live chat rooms</span>
+          <span class="badge">🏅 Judge's Pick badges</span>
+        </div>
+      </div>
+      <div class="media" aria-hidden="true">
+        <!-- Replace src with your hero image or an embedded video poster -->
+        <img src="https://placehold.co/960x540/png?text=Talent+Muse+Hero" alt="Talent Muse preview" />
+      </div>
+    </div>
+  </main>
+
+  <!-- =============================
+       Features: Spotlight / Connect / Karaoke
+  ============================== -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything you need to grow your audience</h2>
+        <a href="#signup" class="button btn-outline">Create your profile</a>
+      </div>
+      <div class="cards">
+        <!-- Spotlight Card -->
+        <article class="card" id="spotlight">
+          <span class="chip">🎤 Spotlight</span>
+          <h3>Upload videos, get votes, win competitions</h3>
+          <p>Submit your performances, rally your fans, and climb the leaderboard with continuous voting. Admin approval and community guidelines keep it fair.</p>
+          <div class="actions">
+            <a href="#signup" class="button btn-primary">Enter Spotlight</a>
+            <a href="#learn-spotlight" class="button btn-outline">How it works</a>
+          </div>
+        </article>
+        <!-- Connect Card -->
+        <article class="card" id="connect">
+          <span class="chip">🤝 Connect</span>
+          <h3>Find collaborators & build your creative team</h3>
+          <p>Search creators by skills and tags, post projects, and collaborate on music videos, cover art, mixing, and more. Keep work public or private.</p>
+          <div class="actions">
+            <a href="#signup" class="button btn-primary">Join Connect</a>
+            <a href="#learn-connect" class="button btn-outline">See examples</a>
+          </div>
+        </article>
+        <!-- Karaoke Card -->
+        <article class="card" id="karaoke">
+          <span class="chip">🎶 Karaoke</span>
+          <h3>Sing solo or duet — create viral moments</h3>
+          <p>Pick a backing track, record your take, and invite others to duet. Start free with basic tracks; unlock premium stems and effects anytime.</p>
+          <div class="actions">
+            <a href="#signup" class="button btn-primary">Try Karaoke</a>
+            <a href="#learn-karaoke" class="button btn-outline">Browse tracks</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+       How It Works
+  ============================== -->
+  <section id="how" class="how">
+    <div class="container">
+      <h2>Start in minutes</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Create your profile</h3>
+          <p>Add a photo, your bio, and links to your socials. Choose public or private.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Upload your talent</h3>
+          <p>Post videos or links from YouTube, TikTok, or Instagram. One vote per user per video.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Engage & collaborate</h3>
+          <p>Join chat rooms, get feedback, earn badges, and team up on projects.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Get discovered</h3>
+          <p>Climb leaderboards, get Judge's Picks, and unlock showcases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+       Testimonials
+  ============================== -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2>What creators are saying</h2>
+      <div class="t-grid" aria-label="Testimonials">
+        <figure class="t-card">
+          <div class="t-head"><div class="avatar" aria-hidden="true"></div><figcaption><strong>Nova Lane</strong><br/><span class="muted">Singer • Cape Town</span></figcaption></div>
+          <p class="t-quote">“Got my first 10k views from a Judge’s Pick. The feedback loop is 🔥.”</p>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><div class="avatar" aria-hidden="true"></div><figcaption><strong>Rex Visuals</strong><br/><span class="muted">Videographer • Joburg</span></figcaption></div>
+          <p class="t-quote">“Found a vocalist + mixer for my short film soundtrack in a day.”</p>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><div class="avatar" aria-hidden="true"></div><figcaption><strong>Mika Beats</strong><br/><span class="muted">Producer • Durban</span></figcaption></div>
+          <p class="t-quote">“The Karaoke duets are surprisingly good collab starters.”</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+       CTA Banner
+  ============================== -->
+  <section class="cta" id="signup">
+    <div class="container">
+      <div class="cta-box">
+        <h2 class="title">Your stage is waiting. Join free today.</h2>
+        <p class="muted">No credit card. Keep everything private or go public when you’re ready.</p>
+        <div>
+          <a class="button btn-primary" href="#">Create Account</a>
+          <a class="button btn-outline" href="#">Preview a Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+       Footer
+  ============================== -->
+  <footer id="contact">
+    <div class="container f-grid">
+      <div>
+        <div class="f-brand"><span class="brand-mark" aria-hidden="true"></span><strong>Talent Muse</strong></div>
+        <p class="muted">Where Talent Meets Opportunity.</p>
+        <div class="social" aria-label="Social links">
+          <a href="https://youtube.com/@TalentMuseOfficial" aria-label="YouTube">YouTube</a>
+          <a href="https://instagram.com/TalentMuseOfficial" aria-label="Instagram">Instagram</a>
+          <a href="https://facebook.com/TalentMuseOfficial" aria-label="Facebook">Facebook</a>
+          <a href="https://tiktok.com/@TalentMuseOfficial" aria-label="TikTok">TikTok</a>
+          <a href="https://x.com/TalentMuseOfc" aria-label="X">X</a>
+        </div>
+        <div class="legal">© <span id="year"></span> Talent Muse LLC • <a href="#">Terms</a> • <a href="#">Privacy</a></div>
+      </div>
+      <div>
+        <strong>Platform</strong>
+        <div class="f-links">
+          <a href="#spotlight">Spotlight</a>
+          <a href="#connect">Connect</a>
+          <a href="#karaoke">Karaoke</a>
+          <a href="#how">How it Works</a>
+        </div>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <div class="f-links">
+          <a href="mailto:info@thetalentmuse.com">info@thetalentmuse.com</a>
+          <span class="muted">Wellington, South Africa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================
+       Minimal JS: mobile menu + year + smooth anchors
+  ============================== -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    const closeDrawer = document.getElementById('closeDrawer');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    function hideDrawer() {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    menuBtn?.addEventListener('click', openDrawer);
+    closeDrawer?.addEventListener('click', hideDrawer);
+    drawer?.querySelectorAll('.drawer-link').forEach(a => a.addEventListener('click', hideDrawer));
+
+    // Smooth scroll for same-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
+
+  <!-- =============================
+       OPTIONAL: JSON-LD (update '@id' & url when hosted)
+  ============================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Talent Muse",
+    "url": "https://thetalentmuse.com",
+    "logo": "https://thetalentmuse.com/logo.png",
+    "sameAs": [
+      "https://youtube.com/@TalentMuseOfficial",
+      "https://instagram.com/TalentMuseOfficial",
+      "https://facebook.com/TalentMuseOfficial",
+      "https://tiktok.com/@TalentMuseOfficial",
+      "https://x.com/TalentMuseOfc"
+    ]
+  }
+  </script>
+</body>
+</html>
